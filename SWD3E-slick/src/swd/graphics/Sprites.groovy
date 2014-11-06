@@ -10,4 +10,5 @@ class Sprites extends Group{
 	{
 		this.setName("group/sprites");
 	}
+	
 }

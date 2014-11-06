@@ -5,6 +5,7 @@ import org.newdawn.slick.Input
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.StateBasedGame;
 import swd.game.action.Action
+import swd.game.action.Group
 import swd.game.actions.SceneActorStandAction
 import swd.game.actions.SceneActorWalkAction
 import swd.game.graphics.SceneActor
@@ -73,7 +74,10 @@ class SceneState extends SWDState{
 		// TODO Auto-generated method stub
 		if(this.sceneStatus==0)
 		{
-			
+			if(input.isKeyDown(Input.KEY_LSHIFT))
+			{
+				
+			}
 		}
 	}
 	@Override
@@ -81,9 +85,25 @@ class SceneState extends SWDState{
 		// TODO Auto-generated method stub
 		if(input.isMouseButtonDown(0))
 			{
-				
-				
+				SceneActor actor=getSceneActor("sceneActor/001");
+				moveSceneActor(actor);
 			}
+	}
+	
+	public void addSceneActor(SceneActor actor)
+	{
+		Group roleGroup=this.sprites.findActorByName("group/map").findActorByName("group/roles");
+		roleGroup.addActor(actor);
+	}
+	
+	public SceneActor getSceneActor(String name)
+	{
+		Group roleGroup=this.sprites.findActorByName("group/map").findActorByName("group/roles");
+		return roleGroup.findActorByName(name);
+	}
+	private void moveSceneActor()
+	{
+		
 	}
 	
 	
