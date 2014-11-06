@@ -35,4 +35,36 @@ class Group extends Actor{
 		return children.get(i);
 	}
 	
+	public Actor findActorByName(String name)
+	{
+		children.each {
+			if(it.getName().equals(name))
+			{
+				return it;
+			}
+		}
+		return null;
+	}
+	public Actor findActorByNameDeep(String name)
+	{
+		Actor target=null;
+		for(Actor actor:children) {
+			println(actor.getName());
+			
+			if(actor.getName().equals(name))
+			{
+				target=actor;
+				return target;
+			}
+			
+			if(actor instanceof Group)
+			{
+				Group group=(Group)actor;
+				target= group.findActorByNameDeep(name);
+				if(target!=null) return target;
+			}
+		}
+		return target;
+	}
+	
 }

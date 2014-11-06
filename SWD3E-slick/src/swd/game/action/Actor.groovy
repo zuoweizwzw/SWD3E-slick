@@ -5,12 +5,13 @@ import org.newdawn.slick.Graphics;
 import org.newdawn.slick.geom.Vector2f
 import org.newdawn.slick.state.StateBasedGame;
 
-abstract class Actor {
+public abstract class Actor {
 
 	SequenceAction rootAction=new Sequence();
 	Actor parent;
 	private String name="";
 	protected Vector2f location=new Vector2f();
+	
 	public void addAction(Action action)
 	{
 		if(rootAction.status==2) rootAction.status=0;
@@ -38,6 +39,11 @@ abstract class Actor {
 		this.name=name;
 	}
 	
+	public String getName()
+	{
+		return this.name;
+	}
+	
 	public void setLocation(float x, float y)
 	{
 		this.location.set(x, y);
@@ -61,5 +67,9 @@ abstract class Actor {
 			return parent.getScreenLocation().copy().add(new Vector2f(getX(),getY()));
 		}
 		else return new Vector2f(getX(),getY());
+	}
+	public void removeAction(int i)
+	{
+		this.rootAction.actions.remove(i);
 	}
 }

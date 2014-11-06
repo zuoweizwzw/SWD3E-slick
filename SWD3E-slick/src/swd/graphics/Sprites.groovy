@@ -6,5 +6,8 @@ import org.newdawn.slick.state.StateBasedGame;
 import swd.game.action.Group
 
 class Sprites extends Group{
-	
+	public Sprites()
+	{
+		this.setName("group/sprites");
+	}
 }

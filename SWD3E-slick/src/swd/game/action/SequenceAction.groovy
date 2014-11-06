@@ -39,5 +39,10 @@ class SequenceAction extends Action{
 	{
 		this.actions.add(action);
 	}
+	
+	public Action getAction(int i)
+	{
+		return this.actions.get(i);
+	}
 
 }

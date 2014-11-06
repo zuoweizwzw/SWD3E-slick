@@ -8,7 +8,9 @@ import org.newdawn.slick.state.StateBasedGame
 import org.newdawn.slick.tests.GUITest;
 import swd.states.SWDState
 import swd.states.SceneState
+import swd.utils.Cache
 import swd.utils.FontLoader;
+import swd.utils.SceneActorLoader
 
 class Main extends StateBasedGame{
 
@@ -34,6 +36,8 @@ class Main extends StateBasedGame{
 	static void initApp()
 	{
 		FontLoader.loadFont();
+		Cache.sceneActorAnis.putAll(SceneActorLoader.loadSceneActorAnis("1-1"));
+		
 	}
 
 }

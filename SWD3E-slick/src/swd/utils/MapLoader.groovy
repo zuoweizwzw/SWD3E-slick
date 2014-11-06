@@ -8,8 +8,9 @@ class MapLoader {
 	public static SceneMap loadSceneMap(String mapNum)
 	{
 		SceneMap map=new SceneMap(mapNum);
-		
-		map.background.addActor(new Sprite(Config.resPath+"\\huge\\"+mapNum+"\\"+mapNum+".png"));
+		Sprite backgroudSprite=new Sprite(Config.resPath+"\\huge\\"+mapNum+"\\"+mapNum+".png",true);
+		backgroudSprite.setName("map/"+mapNum);
+		map.background.addActor(backgroudSprite);
 		
 		File controlsConfig=new File(Config.resPath+"\\huge\\"+mapNum+"\\"+mapNum+"_match.txt");
 		
@@ -26,11 +27,11 @@ class MapLoader {
 				String[] offsets=line.split(" ")[1].split(",");
 				int x=Integer.parseInt(offsets[0]);
 				int y=Integer.parseInt(offsets[1]);
-				Sprite control=new Sprite(Config.resPath+"\\huge\\"+mapNum+"\\"+controlNum+".png");
+				Sprite control=new Sprite(Config.resPath+"\\huge\\"+mapNum+"\\"+controlNum+".png",true);
 				control.setX(x);
 				
 				control.setY(480-y-control.animation.getHeight());
-				control.setName(controlNum);
+				control.setName("map/"+mapNum+"/"+controlNum);
 				map.masks.addActor(control);
 			}
 		}

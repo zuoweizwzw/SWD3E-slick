@@ -24,7 +24,7 @@ class Sprite extends Actor{
 		if(animation!=null) animation.draw(this.location.x, this.location.y, Color.white);
 	}
 	
-	public Sprite(String resPath)
+	public Sprite(String resPath,boolean res)
 	{
 		this.animation=new Animation(resPath);
 	}
