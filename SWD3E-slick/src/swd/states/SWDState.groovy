@@ -7,6 +7,7 @@ import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.BasicGameState
 import org.newdawn.slick.state.StateBasedGame;
 import swd.game.action.SequenceAction
+import swd.graphics.Camera
 import swd.graphics.Sprites
 import swd.graphics.map.SceneMap
 import swd.gui.GUI
@@ -15,6 +16,7 @@ abstract class  SWDState extends BasicGameState{
 
 	Sprites sprites=new Sprites();
 	GUI gui=new GUI();
+	Camera camera=new Camera();
 	SequenceAction rootAction=new Sequence();
 	@Override
 	public void init(GameContainer container, StateBasedGame game)
@@ -38,6 +40,7 @@ abstract class  SWDState extends BasicGameState{
 	public void update(GameContainer container, StateBasedGame game, int delta)
 	throws SlickException {
 
+		camera.update();
 		this.rootAction.act(container,game,delta);
 		sprites.act(container, game, delta);
 		gui.act(container, game, delta);

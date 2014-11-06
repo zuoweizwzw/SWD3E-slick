@@ -10,6 +10,7 @@ class Group extends Actor{
 	public void addActor(Actor actor)
 	{
 		this.children.add(actor);
+		actor.setParent(this);
 	}
 	public void act(GameContainer container, StateBasedGame game, int delta)
 	{
@@ -22,10 +23,12 @@ class Group extends Actor{
 	public void render(GameContainer container, StateBasedGame game, Graphics g) {
 		// TODO Auto-generated method stub
 		super.render(container, game, g);
+		g.translate(this.getX(), this.getY());
 		children.each {
 			it.render(container, game, g);
 		}
-	}
+		g.translate(-this.getX(), -this.getY());
+			}
 	
 	public Actor getActor(int i)
 	{

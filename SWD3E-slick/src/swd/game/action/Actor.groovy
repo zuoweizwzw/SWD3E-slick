@@ -8,6 +8,7 @@ import org.newdawn.slick.state.StateBasedGame;
 abstract class Actor {
 
 	SequenceAction rootAction=new Sequence();
+	Actor parent;
 	private String name="";
 	protected Vector2f location=new Vector2f();
 	public void addAction(Action action)
@@ -35,5 +36,25 @@ abstract class Actor {
 	public void setName(String name)
 	{
 		this.name=name;
+	}
+	public float getX()
+	{
+		return this.location.x;
+	}
+	public float getY()
+	{
+		return this.location.y;
+	}
+	public void setParent(Actor parent){
+		this.parent=parent;
+	}
+	
+	public Vector2f getScreenLocation()
+	{
+		if(parent!=null)
+		{
+			return parent.getScreenLocation().copy().add(new Vector2f(getX(),getY()));
+		}
+		else return new Vector2f(getX(),getY());
 	}
 }

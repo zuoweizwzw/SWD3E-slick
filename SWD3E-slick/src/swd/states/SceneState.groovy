@@ -33,6 +33,7 @@ class SceneState extends SWDState{
 	{
 		Sprite cjc=new Sprite();
 		cjc.setAnimation(SceneActorLoader.loadSceneActorAnis("001").get("001/walk_leftdown"));
+		cjc.setY(480);
 		this.sprites.addActor(cjc);
 	}
 }
