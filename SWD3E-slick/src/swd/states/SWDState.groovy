@@ -3,6 +3,7 @@ package swd.states
 import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
+import org.newdawn.slick.Input
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.BasicGameState
 import org.newdawn.slick.state.StateBasedGame;
@@ -35,16 +36,36 @@ abstract class  SWDState extends BasicGameState{
 		gui.render(container, game, g);
 
 	}
+	
+	
 
 	@Override
 	public void update(GameContainer container, StateBasedGame game, int delta)
 	throws SlickException {
 
-		camera.update();
+		analogHandler(container.getInput());
+		
+		camera.update(this);
 		this.rootAction.act(container,game,delta);
 		sprites.act(container, game, delta);
 		gui.act(container, game, delta);
 		FontLoader.update();
+	}
+	
+	public void analogHandler(Input input)
+	{
+		if(input.isKeyDown(Input.KEY_LSHIFT)) analogKeydown(input);
+		if(input.isMouseButtonDown(0)||input.isMouseButtonDown(1)||input.isMouseButtonDown(2)) analogMouseDown(input);
+	}
+	
+	public void analogKeydown(Input input)
+	{
+			
+	}
+	
+	public void analogMouseDown(Input input)
+	{
+		
 	}
 
 	

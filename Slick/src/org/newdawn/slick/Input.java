@@ -751,6 +751,7 @@ public class Input {
 	 * @return True if the key is down
 	 */
 	public boolean isKeyDown(int code) {
+		
 		return Keyboard.isKeyDown(code);
 	}
 
@@ -761,6 +762,7 @@ public class Input {
 	 */
 	public int getAbsoluteMouseX() {
 		return Mouse.getX();
+		
 	}
 
 	/**

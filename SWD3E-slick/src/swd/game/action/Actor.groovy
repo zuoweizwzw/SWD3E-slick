@@ -37,6 +37,11 @@ abstract class Actor {
 	{
 		this.name=name;
 	}
+	
+	public void setLocation(float x, float y)
+	{
+		this.location.set(x, y);
+	}
 	public float getX()
 	{
 		return this.location.x;
