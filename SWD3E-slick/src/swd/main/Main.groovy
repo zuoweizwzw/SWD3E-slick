@@ -19,13 +19,15 @@ class Main extends StateBasedGame{
 		container.setTargetFrameRate(200);
 		container.setDisplayMode(640,480,false);
 		
-		initApp();
+		
 		container.start();
 	}
 
 	@Override
 	public void initStatesList(GameContainer container) throws SlickException {
 		// TODO Auto-generated method stub
+		initApp();
+		
 		this.addState(new SceneState());
 	}
 	public Main()
@@ -36,8 +38,10 @@ class Main extends StateBasedGame{
 	static void initApp()
 	{
 		FontLoader.loadFont();
-		Cache.sceneActorAnis.putAll(SceneActorLoader.loadSceneActorAnis("1-1"));
+		Cache.sceneActorAnis.putAll(SceneActorLoader.loadSceneActorAnis("001"));
 		
 	}
+	
 
+	
 }

@@ -60,6 +60,7 @@ class SceneActorLoader {
 					}
 					ani.addFrame(frame);
 				}
+				println("::"+name);
 				anis.put(name, ani);
 			}
 			catch(Exception e)

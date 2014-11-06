@@ -17,6 +17,11 @@ public abstract class Actor {
 		if(rootAction.status==2) rootAction.status=0;
 		rootAction.addAction(action);
 	}
+	
+	public void addActions(Action... actions)
+	{
+		this.rootAction.addActions(actions);
+	}
 	public void act(GameContainer container, StateBasedGame game, int delta)
 	{
 		if(rootAction!=null) rootAction.act(container, game,delta);
@@ -71,5 +76,10 @@ public abstract class Actor {
 	public void removeAction(int i)
 	{
 		this.rootAction.actions.remove(i);
+	}
+	
+	public void move(float x,float y)
+	{
+		this.location.add(x, y);
 	}
 }

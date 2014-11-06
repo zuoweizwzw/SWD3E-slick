@@ -4,6 +4,8 @@ import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Input
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.StateBasedGame;
+import swd.game.action.Action
+import swd.game.actions.SceneActorStandAction
 import swd.game.actions.SceneActorWalkAction
 import swd.game.graphics.SceneActor
 import swd.graphics.Sprite
@@ -41,7 +43,7 @@ class SceneState extends SWDState{
 		
 		cjc.setAnimation(SceneActorLoader.loadSceneActorAnis("001").get("001/stand_left"));
 		cjc.setLocation(320,240);
-		cjc.addAction(new SceneActorWalkAction(cjc,this,1));
+		cjc.addActions(new SceneActorWalkAction(cjc,this,1),new SceneActorStandAction(cjc,1));
 		this.sprites.addActor(cjc);
 	}
 	@Override
@@ -54,7 +56,11 @@ class SceneState extends SWDState{
 	public void keyPressed(int key, char c) {
 		// TODO Auto-generated method stub
 		println("aaaaaaa");
-		this.sprites.findActorByNameDeep("sceneActor/001").rootAction.getAction(0).status=2;
+		Action action=this.sprites.findActorByNameDeep("sceneActor/001").rootAction.getAction(0);
+		if(action instanceof SceneActorWalkAction)
+		{
+			action.stop=true;
+		}
 	}
 	@Override
 	public void mousePressed(int button, int x, int y) {

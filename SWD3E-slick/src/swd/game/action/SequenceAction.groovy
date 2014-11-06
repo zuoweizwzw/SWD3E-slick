@@ -18,7 +18,7 @@ class SequenceAction extends Action{
 				actions.remove(0);
 				if(actions.size()>0)
 				{
-					actions.get(0).status=1;
+//					actions.get(0).status=1;
 				}
 				else
 				{
@@ -26,10 +26,10 @@ class SequenceAction extends Action{
 					return;
 				}
 			}
-			else if(actions.get(0).status==0)
-			{
-				actions.get(0).status=1;
-			}
+//			else if(actions.get(0).status==0)
+//			{
+//				actions.get(0).status=1;
+//			}
 			actions.get(0).act(container, game,delta);
 		}
 		else this.status=2;
@@ -43,6 +43,11 @@ class SequenceAction extends Action{
 	public Action getAction(int i)
 	{
 		return this.actions.get(i);
+	}
+	
+	public void addActions(Action...actions)
+	{
+		this.actions.addAll(actions);
 	}
 
 }
