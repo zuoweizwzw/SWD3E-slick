@@ -27,4 +27,9 @@ class Group extends Actor{
 		}
 	}
 	
+	public Actor getActor(int i)
+	{
+		return children.get(i);
+	}
+	
 }

@@ -9,7 +9,7 @@ import org.newdawn.slick.state.StateBasedGame;
 import swd.game.action.Actor
 
 class Sprite extends Actor{
-	public Animation animation;
+	private Animation animation;
 	public Vector2f size=new Vector2f();
 	public void update(GameContainer container, StateBasedGame game, int delta)
 	{
@@ -27,6 +27,16 @@ class Sprite extends Actor{
 	public Sprite(String resPath)
 	{
 		this.animation=new Animation(resPath);
+	}
+	
+	public Sprite()
+	{
+		
+	}
+	
+	public void setAnimation(Animation animation)
+	{
+		this.animation=animation;
 	}
 	
 }

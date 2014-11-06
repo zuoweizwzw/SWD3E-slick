@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import org.lwjgl.Sys;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.Image
+import org.newdawn.slick.geom.Rectangle
+import org.newdawn.slick.geom.Vector2f
 
 class Animation {
 
@@ -16,7 +18,11 @@ class Animation {
 	private boolean firstUpdate = true;
 	private boolean autoUpdate = true;
 	private boolean loop = true;
-	
+	public Vector2f mainOffset=new Vector2f();
+	public Vector2f centerPoint=new Vector2f();
+	public Rectangle colisBox=new Rectangle();
+	public String code="";
+	public String name="";
 	public Animation()
 	{
 		
@@ -32,6 +38,12 @@ class Animation {
 		frame.frameItems.add(item);
 		frames.add(frame);
 		this.currentFrame=0;
+	}
+	
+	public void addFrame(Frame frame)
+	{
+		this.frames.add(frame);
+		currentFrame = 0;
 	}
 	
 	private void nextFrame(long delta) {
