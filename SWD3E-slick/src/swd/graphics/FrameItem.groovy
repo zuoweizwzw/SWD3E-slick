@@ -16,7 +16,7 @@ class FrameItem {
 	}
 	public void draw(float x,float y, Color col)
 	{
-		img.draw((float)(x+offsetX), (float)(y+offsetY), col);
+		img.draw((int)(x+offsetX), (int)(y+offsetY), col);
 		
 	}
 }

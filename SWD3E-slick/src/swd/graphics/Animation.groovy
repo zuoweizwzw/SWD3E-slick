@@ -123,4 +123,24 @@ class Animation {
 	public int getHeight() {
 		return ((Frame) frames.get(currentFrame)).getHeight();
 	}
+	public ArrayList<Frame> getFrames()
+	{
+		return this.frames;
+	}
+	public int getCurrentFrameIndex()
+	{
+		return this.currentFrame;
+	}
+	public void reset()
+	{
+		firstUpdate = true;
+		lastUpdate = 0;
+		nextChange=0;
+		currentFrame = 0;
+	}
+	
+	public void setAutoUpdate(boolean autoUpdate)
+	{
+		this.autoUpdate=autoUpdate;
+	}
 }

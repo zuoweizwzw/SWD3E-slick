@@ -10,11 +10,14 @@ import org.newdawn.slick.geom.Vector2f
 import org.newdawn.slick.state.StateBasedGame;
 import swd.game.action.Action
 import swd.game.action.Group
+import swd.game.actions.OpenDialog1Action
 import swd.game.actions.SceneActorStandAction
 import swd.game.actions.SceneActorWalkAction
 import swd.game.graphics.SceneActor
 import swd.graphics.Sprite
 import swd.graphics.map.SceneMap
+import swd.gui.Paper
+import swd.gui.scene.Dialog1
 import swd.utils.MapLoader;
 import swd.utils.Mappings;
 import swd.utils.SceneActorLoader;
@@ -32,6 +35,7 @@ class SceneState extends SWDState{
 	public void enter(GameContainer container, StateBasedGame game)
 	throws SlickException {
 		// TODO Auto-generated method stub
+		initGUI();
 		this.loadMap("1-1");
 		this.loadRoles();
 		
@@ -49,7 +53,6 @@ class SceneState extends SWDState{
 		
 		cjc.setAnimation(SceneActorLoader.loadSceneActorAnis("001").get("001/stand_left"));
 		cjc.setLocation(320,240);
-		cjc.addActions(new SceneActorWalkAction(cjc,this,1),new SceneActorStandAction(cjc,1));
 		addSceneActor(cjc);
 	}
 	@Override
@@ -60,12 +63,8 @@ class SceneState extends SWDState{
 	
 	@Override
 	public void keyPressed(int key, char c) {
-		// TODO Auto-generated method stub
-		Action action=this.sprites.findActorByNameDeep("sceneActor/001").rootAction.getAction(0);
-		if(action instanceof SceneActorWalkAction)
-		{
-			action.stop=true;
-		}
+		// TODO nerated method stub
+		this.gui.findActorByName("gui/dialog1").addAction(new OpenDialog1Action(this.gui.findActorByName("gui/dialog1")));
 	}
 	@Override
 	public void mousePressed(int button, int x, int y) {
@@ -76,15 +75,18 @@ class SceneState extends SWDState{
 	@Override
 	public void mouseReleased(int button, int x, int y) {
 		// TODO Auto-generated method stub
-		SceneActor actor=getSceneActor("sceneActor/001");
-		
-		if(actor.getActions().size()>0&&actor.getActions().get(0) instanceof SceneActorWalkAction)
+		if(button==1)
 		{
-			println(actor.getActions().get(0));
-			actor.getActions().get(0).stop=true;
-			actor.addAction(new SceneActorStandAction(actor,actor.getActions().get(0).direction));
+			if(sceneStatus!=0) return;
+			SceneActor actor=getSceneActor("sceneActor/001");
 			
+			if(actor.getActions().size()>0&&actor.getActions().get(0) instanceof SceneActorWalkAction)
+			{
+				actor.getActions().get(0).stop=true;
+				
+			}
 		}
+		
 	}
 	
 	@Override
@@ -103,18 +105,33 @@ class SceneState extends SWDState{
 		// TODO Auto-generated method stub
 		if(sceneStatus!=0) return;
 		
-		if(input.isMouseButtonDown(0))
+		if(input.isMouseButtonDown(1))
 			{
 				SceneActor actor=getSceneActor("sceneActor/001");
 				Vector2f mouse=new Vector2f(Mouse.getX(),480-Mouse.getY());
-				Vector2f delta=mouse.copy().sub(new Vector2f(actor.getX(),actor.getY()));
+				Vector2f delta=mouse.copy().sub(actor.getCenterPoint());
+				
 				int direction=Mappings.getDirectionByVector(delta);
+				if(direction==-1) return;
 				if(actor.getActions().size()==0)
 				{
+					if(delta.length()<32) return;
 					actor.addAction(new SceneActorWalkAction(actor,this,direction));
+					
+				}
+				else if(actor.getActions().get(0) instanceof SceneActorWalkAction)
+				{
+					if(delta.length()<32)
+					{
+						actor.getActions().get(0).stop=true;
+					}
+					if(actor.getActions().get(0).direction!=direction)
+					{
+						
+						actor.getActions().get(0).changeDirection(direction);
+					}
 				}
 				
-//				moveSceneActor(actor);
 			}
 	}
 	
@@ -131,6 +148,13 @@ class SceneState extends SWDState{
 	}
 	private void moveSceneActor()
 	{
+		
+	}
+	
+	private void initGUI()
+	{
+		this.gui.addActor(new Dialog1());
+		this.gui.findActorByName("gui/dialog1").visible=false;
 		
 	}
 	

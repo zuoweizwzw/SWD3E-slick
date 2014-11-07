@@ -43,8 +43,13 @@ class Sprite extends Actor{
 	{
 		if(animation!=null)
 		{
-			return animation.centerPoint.copy().sub(animation.mainOffset).copy().add(new Vector2f(this.getX(),this.getY()));
+			return animation.centerPoint.copy().add(animation.mainOffset).copy().add(new Vector2f(this.getX(),this.getY()));
 		}
+	}
+	
+	public Animation getAnimation()
+	{
+		return this.animation;
 	}
 	
 	
