@@ -18,6 +18,11 @@ public abstract class Actor {
 		rootAction.addAction(action);
 	}
 	
+	public ArrayList<Action> getActions()
+	{
+		return rootAction.actions;
+	}
+	
 	public void addActions(Action... actions)
 	{
 		this.rootAction.addActions(actions);
@@ -81,5 +86,14 @@ public abstract class Actor {
 	public void move(float x,float y)
 	{
 		this.location.add(x, y);
+	}
+	
+	public Vector2f getScreenLocation(Vector2f vec)
+	{
+		if(parent!=null)
+		{
+			return parent.getScreenLocation().copy().add(new Vector2f(vec.x,vec.y));
+		}
+		else return new Vector2f(vec.x,vec.y);
 	}
 }

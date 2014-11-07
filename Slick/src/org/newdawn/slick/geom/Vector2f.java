@@ -257,6 +257,8 @@ public strictfp class Vector2f implements Serializable {
 		return this;
 	}
 	
+	
+	
 	/**
 	 * Subtract a vector from this vector
 	 * 

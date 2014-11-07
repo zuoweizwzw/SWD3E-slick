@@ -39,4 +39,14 @@ class Sprite extends Actor{
 		this.animation=animation;
 	}
 	
+	public Vector2f getCenterPoint()
+	{
+		if(animation!=null)
+		{
+			return animation.centerPoint.copy().sub(animation.mainOffset).copy().add(new Vector2f(this.getX(),this.getY()));
+		}
+	}
+	
+	
+	
 }

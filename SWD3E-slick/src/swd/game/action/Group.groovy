@@ -37,10 +37,10 @@ class Group extends Actor{
 	
 	public Actor findActorByName(String name)
 	{
-		children.each {
-			if(it.getName().equals(name))
+		for(Actor actor:children) {
+			if(actor.getName().equals(name))
 			{
-				return it;
+				return actor;
 			}
 		}
 		return null;
@@ -49,7 +49,7 @@ class Group extends Actor{
 	{
 		Actor target=null;
 		for(Actor actor:children) {
-			println(actor.getName());
+			
 			
 			if(actor.getName().equals(name))
 			{

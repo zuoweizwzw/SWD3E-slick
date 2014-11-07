@@ -23,7 +23,6 @@ class SceneActorWalkAction extends Action{
 		if(this.status==0)
 		{
 			this.status=1;
-			println((actor.roleID+"/walk_"+Mappings.getDirectionNameByInt(direction)));
 			this.actor.setAnimation(Cache.sceneActorAnis.get(actor.roleID+"/walk_"+Mappings.getDirectionNameByInt(direction)));
 		}
 		if(this.status==1)
