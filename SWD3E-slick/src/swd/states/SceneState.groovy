@@ -5,14 +5,19 @@ import java.awt.event.MouseAdapter;
 import org.lwjgl.input.Mouse
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Input
+import org.newdawn.slick.MouseListener
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.geom.Vector2f
 import org.newdawn.slick.state.StateBasedGame;
 import swd.game.action.Action
 import swd.game.action.Group
+import swd.game.actions.CloseDialog1Action
 import swd.game.actions.OpenDialog1Action
-import swd.game.actions.SceneActorStandAction
-import swd.game.actions.SceneActorWalkAction
+import swd.game.actions.SceneActorStandAction;
+import swd.game.actions.SceneActorWalkAction;
+import swd.game.actions.ShowDialogTextAction
+import swd.game.actions.StartFightAction
+import swd.game.actions.WaitMouseClickAction
 import swd.game.graphics.SceneActor
 import swd.graphics.Sprite
 import swd.graphics.map.SceneMap
@@ -20,6 +25,7 @@ import swd.gui.Paper
 import swd.gui.scene.Dialog1
 import swd.utils.MapLoader;
 import swd.utils.Mappings;
+import swd.utils.Global
 import swd.utils.SceneActorLoader;
 import swd.utils.Mappings;
 class SceneState extends SWDState{
@@ -58,13 +64,22 @@ class SceneState extends SWDState{
 	@Override
 	public void keyReleased(int key, char c) {
 		// TODO Auto-generated method stub
-		
+		Global.game.getContainer()
 	}
 	
 	@Override
 	public void keyPressed(int key, char c) {
 		// TODO nerated method stub
-		this.gui.findActorByName("gui/dialog1").addAction(new OpenDialog1Action(this.gui.findActorByName("gui/dialog1")));
+//		this.gui.findActorByName("gui/dialog1").addAction(new OpenDialog1Action(this.gui.findActorByName("gui/dialog1"),"face/001/1r"));
+//		this.gui.findActorByName("gui/dialog1").addAction(new ShowDialogTextAction(this.gui.findActorByName("gui/dialog1").textBox,"陈靖仇","[FFFFFFFF]我是天才是左为11111\n[FFFFFFFF]神经病一个啊啊我就是我"));
+//		this.gui.findActorByName("gui/dialog1").addAction(new WaitMouseClickAction());
+//		this.gui.findActorByName("gui/dialog1").addAction(new CloseDialog1Action(this.gui.findActorByName("gui/dialog1")));
+		
+//		Global.game.addState(new FightState());
+		
+		this.sprites.addAction(new StartFightAction());
+		
+		
 	}
 	@Override
 	public void mousePressed(int button, int x, int y) {
@@ -92,6 +107,7 @@ class SceneState extends SWDState{
 	@Override
 	public void analogKeydown(Input input) {
 		// TODO Auto-generated method stub
+		
 		if(this.sceneStatus==0)
 		{
 			if(input.isKeyDown(Input.KEY_LSHIFT))

@@ -12,6 +12,7 @@ class FrameItem {
 	public void draw(float x,float y,float width,float height, Color col)
 	{
 		img.draw(x+offsetX, y+offsetY, width, height, col);
+		img
 		
 	}
 	public void draw(float x,float y, Color col)

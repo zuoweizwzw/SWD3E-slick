@@ -113,6 +113,14 @@ public abstract class StateBasedGame implements Game, InputListener {
 	}
 	
 	/**
+	 * @param id
+	 */
+	public void removeState(int id)
+	{
+		states.remove(new Integer(id));
+	}
+	
+	/**
 	 * Get a state based on it's identifier
 	 * 
 	 * @param id The ID of the state to retrieve

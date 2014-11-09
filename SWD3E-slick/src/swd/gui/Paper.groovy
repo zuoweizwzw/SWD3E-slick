@@ -25,7 +25,10 @@ class Paper extends Group{
 		// TODO Auto-generated method stub
 		if(!visible) return;
 		
-		if(animation!=null) animation.draw(this.location.x, this.location.y, Color.white);
+		if(animation!=null) 
+		{
+			animation.draw(this.location.x, this.location.y, Color.white);
+		}
 		customerRender(container,game,g);
 		super.render(container, game, g);
 		
@@ -38,12 +41,22 @@ class Paper extends Group{
 	
 	public Paper(String resPath)
 	{
-		this.animation=new Animation(resPath);
+		this.setAnimation(new Animation(resPath));
 	}
 	
 	public Paper()
 	{
 		
+	}
+	
+	public void setAnimation(Animation animation)
+	{
+		this.animation=animation;
+		if(animation.frames.size()>0)
+		{
+			this.size.x=animation.frames.get(0).frameItems.get(0).img.getWidth();
+			this.size.y=animation.frames.get(0).frameItems.get(0).img.getHeight();
+		}
 	}
 	
 	

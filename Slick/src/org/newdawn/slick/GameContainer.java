@@ -694,7 +694,7 @@ public abstract class GameContainer implements GUIContext {
 			
 			if (showFPS) {
 				
-				defaultFont.drawString(10, 10, "FPS: "+recordedFPS,Color.black);
+				defaultFont.drawString(10, 10, "FPS: "+recordedFPS,Color.red);
 			}
 			
 			GL.flush();

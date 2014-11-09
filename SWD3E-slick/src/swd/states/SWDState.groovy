@@ -23,6 +23,8 @@ abstract class  SWDState extends BasicGameState{
 	public void init(GameContainer container, StateBasedGame game)
 	throws SlickException {
 		// TODO Auto-generated method stub
+		String[] ss;
+		
 	}
 
 	

@@ -30,6 +30,7 @@ class SequenceAction extends Action{
 //			{
 //				actions.get(0).status=1;
 //			}
+			
 			actions.get(0).act(container, game,delta);
 		}
 		else this.status=2;

@@ -143,4 +143,9 @@ class Animation {
 	{
 		this.autoUpdate=autoUpdate;
 	}
+	
+	public void setName(String name)
+	{
+		this.name=name;
+	}
 }
