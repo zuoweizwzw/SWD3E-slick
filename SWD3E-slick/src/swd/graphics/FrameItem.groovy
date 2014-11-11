@@ -9,15 +9,19 @@ class FrameItem {
 	public Image img;
 	public float offsetX;
 	public float offsetY;
+	public float width=-1;
+	public float height=-1;
 	public void draw(float x,float y,float width,float height, Color col)
 	{
 		img.draw(x+offsetX, y+offsetY, width, height, col);
-		img
+		
 		
 	}
 	public void draw(float x,float y, Color col)
 	{
-		img.draw((int)(x+offsetX), (int)(y+offsetY), col);
+		if(width==-1) width=img.getWidth();
+		if(height==-1) height=img.getHeight();
+		img.draw((int)(x+offsetX), (int)(y+offsetY), width,height, col);
 		
 	}
 }

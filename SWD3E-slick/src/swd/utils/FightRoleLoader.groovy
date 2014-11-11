@@ -32,7 +32,7 @@ class FightRoleLoader {
 				{
 					Frame frame=new Frame();
 					float duration=Float.parseFloat(br.readLine());
-					frame.duration=duration;
+					frame.duration=duration*1000;
 					int keyNum=Integer.parseInt(br.readLine());
 					for(int j=0;j<keyNum;j++)
 					{

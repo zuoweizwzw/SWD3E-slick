@@ -2,6 +2,9 @@ package swd.font
 
 import org.newdawn.slick.Color;
 import org.newdawn.slick.UnicodeFont
+import org.newdawn.slick.font.effects.OutlineEffect
+import org.newdawn.slick.font.effects.OutlineWobbleEffect
+import org.newdawn.slick.font.effects.OutlineZigzagEffect
 
 class SWDFont {
 
@@ -11,6 +14,8 @@ class SWDFont {
 	public SWDFont(UnicodeFont font)
 	{
 		this.font=font;
+//		FontLoader.font18.
+		
 	}
 	
 	private Color getColorFromDes(String colorDes)

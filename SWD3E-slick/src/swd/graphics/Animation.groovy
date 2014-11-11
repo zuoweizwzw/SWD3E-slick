@@ -148,4 +148,10 @@ class Animation {
 	{
 		this.name=name;
 	}
+	
+	
+	public Frame getCurrentFrame()
+	{
+		return frames.get(currentFrameIndex);
+	}
 }

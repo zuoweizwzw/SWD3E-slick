@@ -59,6 +59,10 @@ class Paper extends Group{
 		}
 	}
 	
+	public Animation getAnimation()
+	{
+		return this.animation;
+	}
 	
 	
 }

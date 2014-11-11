@@ -34,9 +34,11 @@ abstract class  SWDState extends BasicGameState{
 	throws SlickException {
 		// TODO Auto-generated method stub
 
+		FontLoader.update();
 		sprites.render(container, game, g);
 		gui.render(container, game, g);
 
+		
 	}
 	
 	
@@ -51,7 +53,7 @@ abstract class  SWDState extends BasicGameState{
 		this.rootAction.act(container,game,delta);
 		sprites.act(container, game, delta);
 		gui.act(container, game, delta);
-		FontLoader.update();
+		
 	}
 	
 	public void analogHandler(Input input)
