@@ -21,6 +21,7 @@ import java.util.Map.Entry;
 import org.newdawn.slick.font.Glyph;
 import org.newdawn.slick.font.GlyphPage;
 import org.newdawn.slick.font.HieroSettings;
+import org.newdawn.slick.font.effects.Effect;
 import org.newdawn.slick.opengl.Texture;
 import org.newdawn.slick.opengl.TextureImpl;
 import org.newdawn.slick.opengl.renderer.Renderer;
@@ -277,6 +278,7 @@ public class UnicodeFont implements org.newdawn.slick.Font {
 	public void addGlyphs(int startCodePoint, int endCodePoint) {
 		for (int codePoint = startCodePoint; codePoint <= endCodePoint; codePoint++)
 			addGlyphs(new String(Character.toChars(codePoint)));
+		
 	}
 
 	/**
@@ -575,6 +577,7 @@ public class UnicodeFont implements org.newdawn.slick.Font {
 				}
 			};
 		}
+		
 		int pageIndex = glyphCode / PAGE_SIZE;
 		int glyphIndex = glyphCode & (PAGE_SIZE - 1);
 		Glyph glyph = null;
@@ -587,6 +590,7 @@ public class UnicodeFont implements org.newdawn.slick.Font {
 		// Add glyph so size information is available and queue it so its image can be loaded later.
 		glyph = page[glyphIndex] = new Glyph(codePoint, bounds, vector, index, this);
 		queuedGlyphs.add(glyph);
+		
 		return glyph;
 	}
 
@@ -913,6 +917,8 @@ public class UnicodeFont implements org.newdawn.slick.Font {
 		return effects;
 	}
 
+	
+	
 	/**
 	 * Returns true if this UnicodeFont caches the glyph drawing instructions to 
 	 * improve performance.

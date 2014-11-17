@@ -2,9 +2,12 @@ package swd.font
 
 import org.newdawn.slick.Color;
 import org.newdawn.slick.UnicodeFont
+import org.newdawn.slick.font.effects.ColorEffect
+import org.newdawn.slick.font.effects.Effect
 import org.newdawn.slick.font.effects.OutlineEffect
 import org.newdawn.slick.font.effects.OutlineWobbleEffect
 import org.newdawn.slick.font.effects.OutlineZigzagEffect
+import swd.utils.FontLoader;
 
 class SWDFont {
 
@@ -14,6 +17,7 @@ class SWDFont {
 	public SWDFont(UnicodeFont font)
 	{
 		this.font=font;
+		
 //		FontLoader.font18.
 		
 	}
@@ -39,8 +43,9 @@ class SWDFont {
 	
 	
 	
-	public void drawStringWithColorControlled(float x, float y, String text)
+	public void drawString(float x, float y, String text, Effect effect)
 	{
+		
 		StringBuffer orignal=new StringBuffer(text);
 		StringBuffer display=new StringBuffer();
 		
@@ -65,8 +70,16 @@ class SWDFont {
 			{
 				char c=orignal.charAt(0);
 				orignal.deleteCharAt(0);
-				
-				font.drawString((int)(x+offsetX), (int)(y+font.getLineHeight()*offsetY), c.toString(),color);
+				font.getEffects().clear();
+				font.getEffects().add(new ColorEffect(java.awt.Color.white));
+				if(effect!=null)
+				{
+					font.getEffects().add(0,effect);
+				}
+				font.clearGlyphs();
+				font.addGlyphs(text);
+				font.loadGlyphs();
+				font.drawString((float)(x+offsetX), (float)(y+font.getLineHeight()*offsetY), c.toString(),color);
 				offsetX+=font.getWidth(c.toString());
 				
 			}

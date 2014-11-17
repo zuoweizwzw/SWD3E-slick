@@ -19,7 +19,7 @@ class TextBox extends Paper{
 	public void customerRender(GameContainer container, StateBasedGame game,
 			Graphics g) {
 		// TODO Auto-generated method stub
-		FontLoader.font24.drawStringWithColorControlled((int)(getX()),(int)( getY()), text);
+		FontLoader.font24.drawString((int)(getX()),(int)( getY()), text);
 		
 		super.customerRender(container, game, g);
 	}

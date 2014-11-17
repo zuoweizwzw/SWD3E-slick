@@ -36,8 +36,9 @@ public class UnicodeFontTest extends BasicGame {
 	public void init(GameContainer container) throws SlickException {
 		container.setShowFPS(false);
 
+		
 		// unicodeFont = new UnicodeFont(Font.decode("Arial Unicode MS"), 25, false, false);
-		unicodeFont = new UnicodeFont("c:/windows/fonts/simhei.ttf", 48, false, false);
+		unicodeFont = new UnicodeFont("c:/windows/fonts/simhei.ttf", 22, false, false);
 //		unicodeFont.setPaddingBottom(10);
 //		unicodeFont.setPaddingRight(10);
 //		unicodeFont.setPaddingAdvanceX(-10);
@@ -59,6 +60,7 @@ public class UnicodeFontTest extends BasicGame {
 	public void render(GameContainer container, Graphics g) {
 		g.setColor(Color.white);
 
+		g.setAntiAlias(false);
 		String text = "我是左为This is UnicodeFont!\nIt rockz. Kerning: T,";
 		unicodeFont.drawString(10, 33, text);
 		// unicodeFont.drawString(10, 33, text, Color.red, 8, 19);

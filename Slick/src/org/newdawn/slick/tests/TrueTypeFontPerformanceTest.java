@@ -42,9 +42,12 @@ public class TrueTypeFontPerformanceTest extends BasicGame {
 	 * @see org.newdawn.slick.Game#init(org.newdawn.slick.GameContainer)
 	 */
 	public void init(GameContainer container) throws SlickException {
-		awtFont = new java.awt.Font("simsun", Font.PLAIN, 16);
-		font = new TrueTypeFont(awtFont, false);
+		awtFont = new java.awt.Font("黑体", Font.PLAIN, 28);
+		
+		font = new TrueTypeFont(awtFont, true,new char[]{'左','为'});
 
+		TrueTypeFont tt;
+		
 		for (int j = 0; j < 2; j++) {
 			int lineLen = 90;
 			for (int i = 0; i < text.length(); i += lineLen) {
