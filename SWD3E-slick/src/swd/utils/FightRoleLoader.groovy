@@ -25,6 +25,7 @@ class FightRoleLoader {
 				int offsetY=Integer.parseInt(foot_str.split(",")[1]);
 				animation.mainOffset=new Vector2f(offsetX, offsetY);
 				int leftAlign=Integer.parseInt(br.readLine());
+				animation.userData.put("leftAlign", leftAlign);
 				int length=Integer.parseInt(br.readLine());
 				
 				
@@ -39,7 +40,19 @@ class FightRoleLoader {
 						FrameItem key=new FrameItem();
 						
 						String imgRes=br.readLine();
-						key.img=new Image((Config.resPath+"\\"+imgRes));
+						
+						key.img=new Image((Config.resPath+"\\"+imgRes.split(" ")[0]));
+						key.offsetX=-animation.mainOffset.x;
+						key.offsetY=-key.img.getHeight()+animation.mainOffset.y;
+						if(imgRes.split(" ").length==2)
+						{
+							boolean flip=Boolean.parseBoolean(imgRes.split(" ")[1]);
+							if(flip) 
+							{
+								key.img=key.img.getFlippedCopy(true, false);
+								key.offsetX=-key.img.getWidth()+animation.mainOffset.x;
+							}
+						}
 						frame.frameItems.add(key);
 					}
 					animation.addFrame(frame);

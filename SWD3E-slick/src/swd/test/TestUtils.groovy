@@ -34,7 +34,22 @@ class TestUtils {
 			model.mp=400;
 			model.mp_max=400;
 			model.energe=100;
-			model.energe=200;
+			model.energe_max=200;
+			model.fightAvatar=Config.resPath+"\\gui\\75-2.png";
+			
+		}
+		if(resID.equals("003"))
+		{
+			model.name="ÍØ°ÎÓñ¶ù";
+			model.description="ÓÎÏ·Ö÷½Ç";
+			model.hp=1200;
+			model.hp_max=1600;
+			model.mp=400;
+			model.mp_max=400;
+			model.energe=100;
+			model.energe_max=200;
+			model.fightAvatar=Config.resPath+"\\gui\\75-3.png";
+			
 		}
 		return model;
 	}
@@ -42,6 +57,8 @@ class TestUtils {
 	{
 		FightModel model=new FightModel();
 		model.allies.add(generateRoleModel("001"));
+		model.allies.add(generateRoleModel("002"));
+		model.enemies.add(generateRoleModel("003"));
 		model.fightMapResID="fightmap/1-1";
 		return model;
 	}

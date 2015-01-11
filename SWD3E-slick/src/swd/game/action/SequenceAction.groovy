@@ -15,6 +15,11 @@ class SequenceAction extends Action{
 		{
 			if(actions.get(0).status==2) 
 			{
+				for(int i=0;i<actions.get(0).listeners.size();i++)
+				{
+					ActionListener listener=actions.get(0).listeners.get(i);
+					listener.onend(actions.get(0));	
+				}
 				actions.remove(0);
 				if(actions.size()>0)
 				{
@@ -26,10 +31,14 @@ class SequenceAction extends Action{
 					return;
 				}
 			}
-//			else if(actions.get(0).status==0)
-//			{
-//				actions.get(0).status=1;
-//			}
+			else if(actions.get(0).status==0)
+			{
+				for(int i=0;i<actions.get(0).listeners.size();i++)
+				{
+					ActionListener listener=actions.get(0).listeners.get(i);
+					listener.onstart(actions.get(0));	
+				}
+			}
 			
 			actions.get(0).act(container, game,delta);
 		}

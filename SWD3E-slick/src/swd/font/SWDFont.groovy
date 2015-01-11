@@ -76,8 +76,8 @@ class SWDFont {
 				{
 					font.getEffects().add(0,effect);
 				}
-				font.clearGlyphs();
-				font.addGlyphs(text);
+//				font.clearGlyphs();
+//				font.addGlyphs(text);
 				font.loadGlyphs();
 				font.drawString((float)(x+offsetX), (float)(y+font.getLineHeight()*offsetY), c.toString(),color);
 				offsetX+=font.getWidth(c.toString());

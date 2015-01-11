@@ -7,10 +7,11 @@ import org.newdawn.slick.state.StateBasedGame;
 
 import swd.game.action.Actor
 import swd.game.action.Group
+import swd.graphics.AnimatedActor
 import swd.graphics.Animation
 import org.newdawn.slick.Color;
 
-class Paper extends Group{
+class Paper extends Group implements AnimatedActor{
 
 	public Animation animation;
 	public Vector2f size=new Vector2f();

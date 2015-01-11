@@ -6,6 +6,7 @@ import org.newdawn.slick.state.StateBasedGame;
 abstract class Action {
 
 	public int status=0;
+	public ArrayList<ActionListener> listeners=new ArrayList<ActionListener>();
 	public abstract void act(GameContainer container, StateBasedGame game, int delta);
 	public void start()
 	{

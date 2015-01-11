@@ -115,6 +115,11 @@ public strictfp class Vector2f implements Serializable {
 		return this;
 	}
 	
+	public Vector2f mulNew(float a)
+	{
+		return new Vector2f(x*a,y*a);
+	}
+	
 	/**
 	 * Get the angle this vector is at
 	 * 
@@ -241,6 +246,12 @@ public strictfp class Vector2f implements Serializable {
 		y = -y;
 		
 		return this;
+	}
+	
+	public Vector2f divNew(float a)
+	{
+		return new Vector2f(x/a,y/a);
+		
 	}
 	
 	/**

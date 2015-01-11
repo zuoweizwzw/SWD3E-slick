@@ -47,6 +47,8 @@ class Main extends StateBasedGame{
 	{
 		FightMapLoader.loadFightMap("1-1");
 		FightRoleLoader.loadFightRole("001");
+		FightRoleLoader.loadFightRole("002");
+		FightRoleLoader.loadFightRole("003");
 		FontLoader.loadFont();
 		Cache.sceneActorAnis.putAll(SceneActorLoader.loadSceneActorAnis("001"));
 		FaceLoader.loadFaces();

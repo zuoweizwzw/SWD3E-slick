@@ -13,7 +13,7 @@ public class FontLoader {
 	public static void loadFont()
 	{
 		
-		font18 = new SWDFont(new UnicodeFont("c:/windows/fonts/simhei.ttf", 18, false, false));
+		font18 = new SWDFont(new UnicodeFont("c:/windows/fonts/simhei.ttf", 16, false, false));
 		font24 = new SWDFont(new UnicodeFont("c:/windows/fonts/simhei.ttf", 20, false, false));
 		
 		

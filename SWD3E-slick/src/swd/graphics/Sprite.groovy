@@ -8,7 +8,7 @@ import org.newdawn.slick.geom.Vector2f
 import org.newdawn.slick.state.StateBasedGame;
 import swd.game.action.Actor
 
-class Sprite extends Actor{
+class Sprite extends Actor implements AnimatedActor{
 	private Animation animation;
 	public Vector2f size=new Vector2f();
 	public void update(GameContainer container, StateBasedGame game, int delta)
@@ -50,6 +50,22 @@ class Sprite extends Actor{
 	public Animation getAnimation()
 	{
 		return this.animation;
+	}
+
+	public int getWidth()
+	{
+		if(this.animation!=null)
+		{
+			return animation.getFrames().get(0).frameItems.get(0).img.getWidth();
+		}
+	}
+	
+	public int getHeight()
+	{
+		if(this.animation!=null)
+		{
+			return animation.getFrames().get(0).frameItems.get(0).img.getHeight();
+		}
 	}
 	
 	

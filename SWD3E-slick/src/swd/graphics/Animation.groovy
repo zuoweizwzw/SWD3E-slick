@@ -18,6 +18,7 @@ class Animation {
 	private boolean firstUpdate = true;
 	private boolean autoUpdate = true;
 	private boolean loop = true;
+	public HashMap<String,Object> userData=new HashMap<String,Object>();
 	public Vector2f mainOffset=new Vector2f();
 	public Vector2f centerPoint=new Vector2f();
 	public Rectangle colisBox=new Rectangle();
@@ -137,6 +138,10 @@ class Animation {
 		lastUpdate = 0;
 		nextChange=0;
 		currentFrame = 0;
+		if(this.frames.size()>0)
+		{
+			nextChange=this.frames.get(0).duration;
+		}
 	}
 	
 	public void setAutoUpdate(boolean autoUpdate)
@@ -153,5 +158,15 @@ class Animation {
 	public Frame getCurrentFrame()
 	{
 		return frames.get(currentFrameIndex);
+	}
+	
+	public int getTotalDuration()
+	{
+		int total=0;
+		for(Frame frame:frames)
+		{
+			total+=frame.duration;
+		}
+		return total;
 	}
 }
