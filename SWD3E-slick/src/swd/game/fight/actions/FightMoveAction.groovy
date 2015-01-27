@@ -1,5 +1,7 @@
 package swd.game.fight.actions
 
+import groovy.ui.SystemOutputInterceptor;
+
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.geom.Vector2f
 import org.newdawn.slick.state.StateBasedGame;
@@ -30,7 +32,6 @@ class FightMoveAction extends Action{
 			int deltay=target.getY()-fightRole.getY();
 			distance=new Vector2f(targetx-orignalx,deltay);
 			unit=distance.divNew((float)(step-5));
-			println(fightRole.getAnimation());
 			status=1;
 		}
 		if(status==1)

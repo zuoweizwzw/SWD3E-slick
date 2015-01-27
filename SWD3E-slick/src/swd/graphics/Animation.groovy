@@ -169,4 +169,9 @@ class Animation {
 		}
 		return total;
 	}
+	
+	public void setLoop(boolean loop)
+	{
+		this.loop=loop;
+	}
 }

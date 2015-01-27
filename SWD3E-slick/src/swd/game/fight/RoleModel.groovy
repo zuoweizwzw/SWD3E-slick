@@ -2,8 +2,13 @@ package swd.game.fight;
 
 import java.util.ArrayList;
 
+import swd.game.graphics.fight.FightRole;
+
 public class RoleModel {
 
+	public FightRole fightRole;
+	
+	
 	public String gameID="";
 	public String resCode="";
 	public String name="";

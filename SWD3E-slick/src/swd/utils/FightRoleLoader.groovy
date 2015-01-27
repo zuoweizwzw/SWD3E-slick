@@ -5,6 +5,7 @@ import org.newdawn.slick.geom.Vector2f
 import swd.graphics.Animation
 import swd.graphics.Frame
 import swd.graphics.FrameItem
+import swd.script.SWDScript
 
 class FightRoleLoader {
 
@@ -12,7 +13,17 @@ class FightRoleLoader {
 		File dir=new File(Config.resPath+"\\char\\"+roleID+"\\fight");
 		for(File file:dir.listFiles())
 		{
-			try
+			if(file.isDirectory())
+			{
+				if(file.getName().indexOf("scripts")>=0)
+				{
+					loadFightScripts(roleID,file);
+				}
+			}
+			
+			else
+			{
+				try
 			{
 				Animation animation=new Animation();
 				BufferedReader br=new BufferedReader(new FileReader(file));
@@ -27,7 +38,6 @@ class FightRoleLoader {
 				int leftAlign=Integer.parseInt(br.readLine());
 				animation.userData.put("leftAlign", leftAlign);
 				int length=Integer.parseInt(br.readLine());
-				
 				
 				for(int i=1;i<length+1;i++)
 				{
@@ -64,6 +74,27 @@ class FightRoleLoader {
 			{
 				e.printStackTrace();
 			}
+			}
+		}
+	}
+	
+	private static void loadFightScripts(String roleID, File dir)
+	{
+		for(File file:dir.listFiles())
+		{
+			
+			BufferedReader br=new BufferedReader(new FileReader(file));
+			String line="";
+			SWDScript script=new SWDScript();
+			line=br.readLine();
+			String code=line;
+			
+			while((line=br.readLine())!=null)
+			{
+				script.scripts.add(line);
+			}
+			Cache.scripts.put(code, script);
+			
 		}
 	}
 }

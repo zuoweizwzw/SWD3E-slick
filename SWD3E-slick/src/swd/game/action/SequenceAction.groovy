@@ -59,5 +59,12 @@ class SequenceAction extends Action{
 	{
 		this.actions.addAll(actions);
 	}
+	
+	public void startAction(Action action)
+	{
+		this.actions.clear();
+		this.actions.add(action);
+		this.status==0;
+	}
 
 }

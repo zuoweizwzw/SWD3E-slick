@@ -8,6 +8,7 @@ import org.newdawn.slick.state.StateBasedGame;
 public abstract class Actor {
 
 	SequenceAction rootAction=new Sequence();
+	
 	Actor parent;
 	private String name="";
 	protected Vector2f location=new Vector2f();
@@ -16,6 +17,12 @@ public abstract class Actor {
 	{
 		if(rootAction.status==2) rootAction.status=0;
 		rootAction.addAction(action);
+	}
+	
+	//删除所有动作并开始新的动作
+	public void startAction(Action action)
+	{
+		rootAction.startAction(action);
 	}
 	
 	public ArrayList<Action> getActions()

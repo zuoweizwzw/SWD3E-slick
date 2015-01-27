@@ -24,6 +24,9 @@ class Group extends Actor{
 		// TODO Auto-generated method stub
 		super.render(container, game, g);
 		g.translate(this.getX(), this.getY());
+		children.sort{a,b->
+			a.location.y.compareTo(b.location.y);
+		}
 		children.each {
 			it.render(container, game, g);
 		}
