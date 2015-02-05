@@ -24,4 +24,5 @@ public class RoleModel {
 	public int exp_max;
 	public ArrayList<String> magics=new ArrayList<String>();
 	public String fightAvatar="";
+	public HashMap<String,SkillModel> skills=new HashMap<String,SkillModel>();
 }

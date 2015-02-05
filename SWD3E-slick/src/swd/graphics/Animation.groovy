@@ -59,15 +59,28 @@ class Animation {
 		
 		while (nextChange < 0 && (!stopped)) {
 			
-			if ((currentFrame == frames.size() - 1) && (!loop)) {
+			
+			
+			currentFrame = (currentFrame + 1);
+			
+			
+			
+			if ((currentFrame == frames.size()) && (!loop)) {
 				stopped = true;
+				currentFrame=0;
 				break;
 			}
-			currentFrame = (currentFrame + 1) % frames.size();
+			
+			if ((currentFrame == frames.size()) && (loop)) {
+				currentFrame=0;
+			}
 			
 			int realDuration = (int) (((Frame) frames.get(currentFrame)).duration);
 			nextChange = nextChange + realDuration;
+			
 		}
+		
+		
 	}
 	
 	public void draw(float x,float y,float width,float height, Color col) {
@@ -137,6 +150,7 @@ class Animation {
 		firstUpdate = true;
 		lastUpdate = 0;
 		nextChange=0;
+		stopped=false;
 		currentFrame = 0;
 		if(this.frames.size()>0)
 		{
@@ -173,5 +187,10 @@ class Animation {
 	public void setLoop(boolean loop)
 	{
 		this.loop=loop;
+	}
+	
+	public boolean isStopped()
+	{
+		return stopped;
 	}
 }

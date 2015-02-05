@@ -23,7 +23,7 @@ abstract class  SWDState extends BasicGameState{
 	public void init(GameContainer container, StateBasedGame game)
 	throws SlickException {
 		// TODO Auto-generated method stub
-		String[] ss;
+		
 		
 	}
 
@@ -50,11 +50,18 @@ abstract class  SWDState extends BasicGameState{
 		analogHandler(container.getInput());
 		
 		camera.update(this);
+		
+		
+		
 		this.rootAction.act(container,game,delta);
 		sprites.act(container, game, delta);
 		gui.act(container, game, delta);
 		
+		customerUpdate(container, game, delta);
+		
 	}
+	
+	public abstract void customerUpdate(GameContainer container, StateBasedGame game, int delta);
 	
 	public void analogHandler(Input input)
 	{

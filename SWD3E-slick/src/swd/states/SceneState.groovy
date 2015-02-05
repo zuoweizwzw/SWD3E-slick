@@ -173,6 +173,13 @@ class SceneState extends SWDState{
 		this.gui.findActorByName("gui/dialog1").visible=false;
 		
 	}
+
+	@Override
+	public void customerUpdate(GameContainer container, StateBasedGame game,
+			int delta) {
+		// TODO Auto-generated method stub
+		
+	}
 	
 	
 }

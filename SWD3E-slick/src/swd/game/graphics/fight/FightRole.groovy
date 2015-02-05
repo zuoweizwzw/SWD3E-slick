@@ -6,6 +6,7 @@ import org.newdawn.slick.geom.Vector2f
 import org.newdawn.slick.state.StateBasedGame;
 
 import swd.game.fight.RoleModel
+import swd.graphics.Animation
 import swd.graphics.Sprite
 import swd.script.SWDScript
 import swd.utils.Cache
@@ -22,7 +23,6 @@ class FightRole extends Sprite{
 		this.roleModel=model;
 //		this.setAnimation(Cache.fightRoles.get(model.resCode+"/fight/stand_left"));
 		this.setName(roleModel.resCode);
-		
 	}
 	
 	public int readCurrentLeftAlign()
@@ -50,5 +50,13 @@ class FightRole extends Sprite{
 				  (float)(-this.getAnimation().getFrames().get(0).frameItems.get(0).offsetX+readCurrentLeftAlign()),
 				  this.getHeight());
 		 }
+	}
+	
+	public Animation getAnimation(String typeCode)
+	{
+		String direction;
+		if(this.direction==0) direction="left";
+		else direction="right";
+		return Cache.fightRoles.get(this.roleModel.resCode+"/fight/"+typeCode+"_"+direction);	
 	}
 }

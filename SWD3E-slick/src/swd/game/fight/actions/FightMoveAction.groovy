@@ -27,11 +27,22 @@ class FightMoveAction extends Action{
 			animation.reset();
 			step=animation.getTotalDuration();
 			animation.setAutoUpdate(false);
-			int orignalx=this.fightRole.getX()+ this.fightRole.getAnimation().userData.get("leftAlign");
-			int targetx=target.getX()-this.target.getAnimation().userData.get("leftAlign");
-			int deltay=target.getY()-fightRole.getY();
+			int orignalx;
+			int targetx;
+			if(fightRole.direction==0)
+			{
+				orignalx=this.fightRole.getX()+ this.fightRole.getAnimation().userData.get("leftAlign");
+				targetx=target.getX()-this.target.getAnimation().userData.get("leftAlign");
+			}
+			else
+			{
+				orignalx=this.fightRole.getX()- this.fightRole.getAnimation().userData.get("leftAlign");
+				targetx=target.getX()+this.target.getAnimation().userData.get("leftAlign");
+			}
+			
+			int deltay=target.getY()-fightRole.getY()+1;
 			distance=new Vector2f(targetx-orignalx,deltay);
-			unit=distance.divNew((float)(step-5));
+			unit=distance.divNew((float)(step));
 			status=1;
 		}
 		if(status==1)

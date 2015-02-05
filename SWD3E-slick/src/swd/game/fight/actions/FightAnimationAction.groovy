@@ -32,7 +32,7 @@ public class FightAnimationAction extends Action{
 			}
 			else
 			{
-				if(animation.getCurrentFrameIndex()==animation.getFrames().size()-1)
+				if(animation.isStopped())
 			{
 				this.status=2;
 			}

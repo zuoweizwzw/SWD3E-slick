@@ -39,5 +39,10 @@ public class FightAttackAction extends Action {
 		this.target=target;
 		this.animation=animation;
 	}
+	
+	public int getCurrentAnimationFrame()
+	{
+		return this.animation.getCurrentFrameIndex();
+	}
 
 }

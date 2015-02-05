@@ -1,6 +1,7 @@
 package swd.test
 
 import swd.game.fight.FightModel
+import swd.utils.SkillsLoader;
 import swd.game.fight.RoleModel
 import swd.utils.Config;
 class TestUtils {
@@ -24,6 +25,7 @@ class TestUtils {
 		model.energe=10;
 		model.energe_max=200;
 		model.fightAvatar=Config.resPath+"\\gui\\75-1.png";
+		model.skills=SkillsLoader.loadSkillsByRole(resID);
 		}
 		if(resID.equals("002"))
 		{

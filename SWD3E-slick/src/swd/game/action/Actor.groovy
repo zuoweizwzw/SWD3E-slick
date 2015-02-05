@@ -11,7 +11,7 @@ public abstract class Actor {
 	
 	Actor parent;
 	private String name="";
-	protected Vector2f location=new Vector2f();
+	public Vector2f location=new Vector2f();
 	
 	public void addAction(Action action)
 	{
